@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Playfair+Display+SC&family=Poppins&family=Sacramento&display=swap" rel="stylesheet">
+
     <title>Page 1</title>
 
     <style>
+        h1 {
+            font-family: 'Major Mono Display';
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 300;
+            text-decoration: underline;
+        }
+
         button {
             background-color: rgb(0, 80, 159);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 10px 30px 10px 30px;
             text-align: center;
-            font-size: 16px;
+            font-size: 30px;
             cursor: pointer;
+            font-family: 'Sacramento', cursive;
+        }
+
+        p {
+            background-color: aliceblue;
+            padding: 10px;
+            font-family: 'Poppins', sans-serif;
         }
 
         b {
@@ -26,11 +46,7 @@
         i {
             color: red;
             font-weight: 700;
-        }
-        
-        p {
-            background-color: aliceblue;
-            padding: 10px;
+            font-family: 'Playfair Display SC', serif;
         }
 
     </style>
@@ -39,27 +55,38 @@
     <script>
         console.log("Hello, my name is Nakita");
 
+        // Count the # of times button was clicked
         let count = 0;
         function buttonClick() {
             
-            if(count < 5) {
+            if (count < 4) {
                 count++;
                 console.log("the button was clicked "+ count + " times");
                 document.getElementById("countdisplay").innerText = count;
 
             } else {
-                document.write("Congratulations! You have clicked the button " + count++ + " times");
+                count = count + 1;
+                console.log("the button was clicked "+ count + " times");
+                document.write("<h2>Congratulations! You have clicked the button " + count + " times<h2>");
             }
         }
 
     </script>
 
-    <h1>Hello World</h1>
+    <h1>&#8212Hello World&#8212</h1>
+
+    <hr>
+
+    <!-- Button to count # of clicks + Counter Display-->
+    <h2>JavaScript Intro HW: Add a script that modifies the document</h2>
     <button type = "button" onclick="buttonClick()">Click me!</button>
 
     <p>
         You have clicked the button <b id = "countdisplay">0</b> times
-        <br><br><i>Please click over 5 times</i>
+        <br><br><i>Please click 5 times</i>
     </p>
+
+    <hr>
+
 </body>
 </html>

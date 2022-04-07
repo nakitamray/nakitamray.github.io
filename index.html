@@ -11,7 +11,7 @@
             background-color: rgb(0, 80, 159);
             color: white;
             border: none;
-            padding: 15px 32px;
+            padding: 15px 30px;
             text-align: center;
             font-size: 16px;
             cursor: pointer;
@@ -23,6 +23,16 @@
             font-size: 16px;
         }
 
+        i {
+            color: red;
+            font-weight: 700;
+        }
+        
+        p {
+            background-color: aliceblue;
+            padding: 10px;
+        }
+
     </style>
 </head>
 <body>
@@ -31,9 +41,15 @@
 
         let count = 0;
         function buttonClick() {
-            count++;
-            console.log("the button was clicked "+ count + " times");
-            document.getElementById("countdisplay").write(count);
+            
+            if(count < 5) {
+                count++;
+                console.log("the button was clicked "+ count + " times");
+                document.getElementById("countdisplay").innerText = count;
+
+            } else {
+                document.write("Congratulations! You have clicked the button " + count++ + " times");
+            }
         }
 
     </script>
@@ -41,6 +57,9 @@
     <h1>Hello World</h1>
     <button type = "button" onclick="buttonClick()">Click me!</button>
 
-    <p>You have clicked the button <b id = "countdisplay">0</b> times</p>
+    <p>
+        You have clicked the button <b id = "countdisplay">0</b> times
+        <br><br><i>Please click over 5 times</i>
+    </p>
 </body>
 </html>

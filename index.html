@@ -49,6 +49,21 @@
             font-family: 'Playfair Display SC', serif;
         }
 
+        #button_row {
+            background-color: aliceblue;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #button_row button {
+            padding: 1px 5px 1px 5px;
+            border-radius: 50px;
+            font-family: 'Major Mono Display';
+        }
+
+        #brightdown {
+            margin-left: 50px;
+        }
+
     </style>
 </head>
 <body>
@@ -71,6 +86,9 @@
             }
         }
 
+        // Change brightness of the Image
+        
+
     </script>
 
     <h1>&#8212Hello World&#8212</h1>
@@ -85,6 +103,20 @@
         You have clicked the button <b id = "countdisplay">0</b> times
         <br><br><i>Please click 5 times</i>
     </p>
+
+    <hr>
+
+    <h2>JS Basics HW: Interactive Script</h2>
+    <div class = "img_block">
+        <img src = "https://images.unsplash.com/photo-1649516702655-e4ea2a1ea09c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=419&q=80" alt = "city">
+    </div>
+
+    <div id = "button_row">
+        <p>Brightness
+            <button id = "brightdown">-</button>
+            <button id = "brightup">+</button>
+        </p>
+    </div>
 
     <hr>
 

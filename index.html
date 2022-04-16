@@ -87,6 +87,27 @@
         }
 
         // Change brightness of the Image
+        let brightness = 100;
+
+        function brightDown() {
+            console.log("Make Brightness go down");
+
+
+            brightness = brightness - 10;
+            document.getElementById("img").style.filter = "brightness(" + brightness + "%)";
+
+            
+        }
+
+        function brightUp() {
+            console.log("Make Brightness go up");
+
+            brightness = brightness + 10;
+            document.getElementById("img").style.filter = "brightness(" + brightness + "%)";
+
+            
+        }
+        
     </script>
 
     <h1>&#8212Hello World&#8212</h1>
@@ -106,11 +127,11 @@
 
     <h2>JS Basics HW: Interactive Script</h2>
     <div class = "img_block">
-        <img src = "https://images.unsplash.com/photo-1649516702655-e4ea2a1ea09c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=419&q=80" alt = "city">
+        <img id = "img" src = "https://images.unsplash.com/photo-1612882852555-e318c5e927b3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt = "Flower buds in snow">
     </div>
 
     <div id = "button_row">
-        <p>Brightness
+        <p>Change the Brightness of the Image
             <button id = "brightdown" onclick = "brightDown()">-</button>
             <button id = "brightup" onclick = "brightUp()">+</button>
         </p>

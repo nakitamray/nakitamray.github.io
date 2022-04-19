@@ -101,6 +101,15 @@
 
             brightness = brightness - 10;
             document.getElementById("img").style.filter = "brightness(" + brightness + "%)";
+
+            if (brightness < 0) {
+                document.getElementById("brightness-break").innerHTML = "0 is the lowest brightness";
+                brightness = 0;
+            } else {
+                document.getElementById("brightness-break").innerHTML = "";
+            }
+
+            document.getElementById("brightnessdisplay").innerHTML = brightness + "%";
             
         }
 
@@ -109,6 +118,8 @@
 
             brightness = brightness + 10;
             document.getElementById("img").style.filter = "brightness(" + brightness + "%)";
+
+            document.getElementById("brightnessdisplay").innerHTML = brightness + "%";
 
         }
         
@@ -136,9 +147,11 @@
     </div>
 
     <div id = "button_row">
-        <p>Change the Brightness of the Image
+        <p>The Brightness of the Image is: <b id = "brightnessdisplay">100%</b>
             <button id = "brightdown" onclick = "brightDown()">-</button>
-            <button id = "brightup" onclick = "brightUp()">+</button>
+            <button id = "brightup" onclick = "brightUp()">+</button> <br>
+            <b id = "brightness-break"></b><br>
+            <i><small>The normal amount of brightness is 100%</small></i>
         </p>
     </div>
 

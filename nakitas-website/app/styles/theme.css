@@ -1,0 +1,57 @@
+/* ============================================
+   THEME.CSS — Master Control Panel
+   --------------------------------------------
+   Change a value here, the whole site updates.
+   Variables are named like a restaurant menu
+   so they describe MEANING, not just color.
+   ============================================ */
+
+:root {
+  /* -- Brand Palette ---------------------------------------- */
+  --color-vinyl-noir: #0a0807;
+  --color-ink-shadow: #1a1612;
+  --color-cream-linen: #f4ead5;
+  --color-paper-aged: #e8dcc0;
+  --color-brass-needle: #c9a961;
+  --color-truffle-gold: #b8860b;
+  --color-saffron-spill: #e8a838;
+  --color-burgundy-velvet: #5c1a1b;
+  --color-terracotta-clay: #c8553d;
+  --color-sage-herb: #87926d;
+  --color-eggplant-bloom: #3d2438;
+
+  /* -- Glass / Overlay -------------------------------------- */
+  --color-glass-veil: rgba(244, 234, 213, 0.12);
+  --color-glass-border: rgba(244, 234, 213, 0.25);
+  --color-shadow-deep: rgba(10, 8, 7, 0.6);
+
+  /* -- Typography ------------------------------------------- */
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-italic-accent: var(--font-playfair), 'Playfair Display', serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+
+  /* -- Motion Language -------------------------------------- */
+  --ease-silk: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-drop: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-rise: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-glide: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --duration-instant: 0.2s;
+  --duration-quick: 0.4s;
+  --duration-graceful: 0.8s;
+  --duration-luxurious: 1.2s;
+  --duration-cinematic: 2.0s;
+
+  /* -- Spacing Rhythm --------------------------------------- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* -- Radii ----------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}

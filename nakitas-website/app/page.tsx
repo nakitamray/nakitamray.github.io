@@ -1,24 +1,44 @@
+"use client";
+
+import { useState } from "react";
+import GramophoneScene from "./components/loader/GramophoneScene";
+import MenuScene from "./components/menu/MenuScene";
+import MusicCredit from "./components/shared/MusicCredit";
+
 export default function Home() {
+  const [hasEntered, setHasEntered] = useState(false);
+  const [musicStarted, setMusicStarted] = useState(false);
+  const [enterFeast, setEnterFeast] = useState(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-8">
-      <h1
-        className="text-6xl"
-        style={{ color: "var(--color-cream-linen)" }}
-      >
-        Welcome to Nakita&apos;s Website
-      </h1>
-      <p
-        className="text-xl font-italic-accent"
-        style={{ color: "var(--color-brass-needle)" }}
-      >
-        turn up the volume for an experience
-      </p>
-      <p
-        className="text-sm mt-12 opacity-50"
-        style={{ color: "var(--color-paper-aged)" }}
-      >
-        Foundation ready. Loader scene coming next.
-      </p>
+    <main>
+      {!hasEntered && (
+        <GramophoneScene
+          onMusicStart={() => setMusicStarted(true)}
+          onTransitionComplete={() => setHasEntered(true)}
+        />
+      )}
+
+      {hasEntered && !enterFeast && (
+        <MenuScene onEnterFeast={() => setEnterFeast(true)} />
+      )}
+
+      {enterFeast && (
+        <section
+          className="w-screen h-screen flex items-center justify-center"
+          style={{ backgroundColor: "var(--color-burgundy-velvet)" }}
+        >
+          <p
+            className="text-2xl font-italic-accent"
+            style={{ color: "var(--color-cream-linen)" }}
+          >
+            feast scene coming in step 7
+          </p>
+        </section>
+      )}
+
+      {/* Persistent music credit — only visible once music starts */}
+      <MusicCredit isVisible={musicStarted} />
     </main>
   );
 }

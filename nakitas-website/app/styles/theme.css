@@ -8,22 +8,38 @@
 
 :root {
   /* -- Brand Palette ---------------------------------------- */
-  --color-vinyl-noir: #0a0807;
-  --color-ink-shadow: #1a1612;
-  --color-cream-linen: #f4ead5;
-  --color-paper-aged: #e8dcc0;
-  --color-brass-needle: #c9a961;
-  --color-truffle-gold: #b8860b;
-  --color-saffron-spill: #e8a838;
-  --color-burgundy-velvet: #5c1a1b;
-  --color-terracotta-clay: #c8553d;
-  --color-sage-herb: #87926d;
-  --color-eggplant-bloom: #3d2438;
+  /* Deep blues — primary atmosphere */
+  --color-midnight-ink: #050812;        /* deepest, near-black blue, primary bg */
+  --color-navy-velvet: #0e1b35;         /* rich navy, secondary surfaces */
+  --color-sapphire-deep: #1a2f55;       /* deep sapphire, depth + shadow */
+  --color-steel-blue: #3a5378;          /* dusty steel, muted accents */
+  --color-cobalt-glow: #4a7ab8;         /* brighter cobalt, hover glow */
 
+  /* Warm metals — accents that "shine" against the blue */
+  --color-brass-needle: #c9a961;        /* warm brass, primary accent */
+  --color-truffle-gold: #b8860b;        /* deeper gold, hover states */
+  --color-champagne-light: #e6d3a3;     /* soft champagne, highlights */
+
+  /* Warm neutrals — text + soft surfaces */
+  --color-cream-linen: #f4ead5;         /* warm off-white, primary text */
+  --color-paper-aged: #e8dcc0;          /* aged paper, secondary text */
+  --color-ink-shadow: #0a0f1c;          /* deep ink, outlines + line art */
+
+  /* Spice accents — used sparingly for energy */
+  --color-burgundy-velvet: #5c1a1b;     /* deep wine, primary CTA */
+  --color-saffron-spill: #e8a838;       /* saffron pop, vibrant accents */
+  --color-terracotta-clay: #c8553d;     /* warm orange-red, food accents */
+  --color-sage-herb: #87926d;           /* muted green, fresh accents */
+
+  /* Warm halo — sits behind the record for dramatic contrast */
+  --color-ember-glow: #d44a1c;          /* warm orange-red, primary glow */
+  --color-amber-warmth: #e8742a;        /* slightly brighter, glow accent */
+  --color-rust-shadow: #7a2410;         /* deeper rust, glow falloff */
+  
   /* -- Glass / Overlay -------------------------------------- */
-  --color-glass-veil: rgba(244, 234, 213, 0.12);
-  --color-glass-border: rgba(244, 234, 213, 0.25);
-  --color-shadow-deep: rgba(10, 8, 7, 0.6);
+  --color-glass-veil: rgba(74, 122, 184, 0.12);     /* subtle blue glass */
+  --color-glass-border: rgba(201, 169, 97, 0.3);    /* brass border on glass */
+  --color-shadow-deep: rgba(5, 8, 18, 0.7);         /* midnight shadow */
 
   /* -- Typography ------------------------------------------- */
   --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;

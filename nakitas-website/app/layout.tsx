@@ -39,6 +39,25 @@ export default function RootLayout({
       <body
         className={`${cormorant.variable} ${playfair.variable} ${inter.variable}`}
       >
+        {/* ============================================
+            Persistent YouTube player container.
+            Lives at the root so audio survives across
+            scene unmounts. Positioned far offscreen.
+            ============================================ */}
+        <div
+          id="youtube-player"
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            top: "-9999px",
+            left: "-9999px",
+            width: "1px",
+            height: "1px",
+            opacity: 0,
+            pointerEvents: "none",
+          }}
+        />
+
         {children}
       </body>
     </html>

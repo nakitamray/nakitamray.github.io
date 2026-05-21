@@ -1,7 +1,12 @@
 /* ============================================================
    needleDrop.ts
-   GSAP timeline: needle drops onto record, record spins,
-   then camera zooms into the center hole as portal transition.
+   GSAP timeline:
+   1. Hint fades
+   2. Tonearm rotates counterclockwise from rest to onto-record
+   3. Subtle needle bounce
+   4. Record begins infinite spin
+   5. Hold for ambiance
+   6. Portal zoom + color fill
    ============================================================ */
 
 import { gsap } from "gsap";
@@ -16,28 +21,32 @@ export function playNeedleDropSequence({ onComplete }: NeedleDropOptions = {}) {
     defaults: { ease: "power2.inOut" },
   });
 
-  // 1. Fade out the trigger text gracefully
-  tl.to(".loader-trigger", {
+  // 1. Fade the hint
+  tl.to(".loader-hint", {
     opacity: 0,
     y: 10,
     duration: 0.6,
     ease: "power2.in",
   });
 
-  // 2. Tonearm rotates into position over the record
+  // 2. Tonearm rotates counterclockwise (negative degrees) from
+  //    rest position. Pivot at (760, 130), arm angles toward
+  //    record. Rotating -32° swings needle further left onto
+  //    the outer groove.
   tl.to(
     "#tonearm-group",
     {
-      rotation: -55,
+      rotation: 25,
       duration: 1.6,
       ease: "power3.inOut",
+      svgOrigin: "760 130", // GSAP-specific: explicit SVG rotation origin
     },
     "-=0.2"
   );
 
-  // 3. Small "needle touchdown" bounce
+  // 3. Needle bounce
   tl.to("#needle-tip", {
-    scale: 1.15,
+    scale: 1.3,
     transformOrigin: "center",
     duration: 0.15,
     yoyo: true,
@@ -45,38 +54,39 @@ export function playNeedleDropSequence({ onComplete }: NeedleDropOptions = {}) {
     ease: "power2.out",
   });
 
-  // 4. Record begins spinning forever (separate animation,
-  //    not part of the main timeline so it persists)
+  // 4. RECORD SPIN — separate infinite tween. svgOrigin tells
+  //    GSAP to rotate around (400, 400) in SVG coordinates,
+  //    bypassing CSS transform-origin issues with SVG groups.
   tl.add(() => {
-    gsap.to("#vinyl-disc", {
+    gsap.to("#record-group", {
       rotation: 360,
-      duration: 1.8,
+      duration: 4,
       ease: "none",
       repeat: -1,
-      transformOrigin: "center",
+      svgOrigin: "400 400",
     });
   });
 
-  // 5. Hold so the visitor enjoys the music + spinning record
-  tl.to({}, { duration: 2.5 });
+  // 5. Hold for ambiance
+  tl.to({}, { duration: 2.8 });
 
-  // 6. PORTAL ZOOM — scale the entire scene into the center hole
+  // 6. Portal zoom
   tl.to(".gramophone-scene", {
-    scale: 40,
-    duration: 2.2,
+    scale: 50,
+    duration: 2.4,
     ease: "power3.in",
     transformOrigin: "center center",
   });
 
-  // 7. Fade to black as the zoom ends
+  // 7. Solid color fill at the end
   tl.to(
-    ".gramophone-scene",
+    ".portal-fill",
     {
-      opacity: 0,
-      duration: 0.6,
+      opacity: 1,
+      duration: 0.8,
       ease: "power2.in",
     },
-    "-=0.4"
+    "-=1.0"
   );
 
   return tl;

@@ -12,12 +12,17 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: var(--color-midnight-ink);
+  background-color: var(--color-loader-shadow);
   color: var(--color-cream-linen);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+}
+
+body.scroll-locked {
+  overflow-y: hidden;
+  height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,4 +47,143 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* ============================================
+   Needle pulse — gentle attention-getter
+   on the loader's clickable needle
+   ============================================ */
+@keyframes needle-breathe {
+  0%, 100% {
+    opacity: 1;
+    transform-origin: center;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ============================================
+   Radar pulse — outward expanding ring effect
+   on the loader's needle indicator
+   ============================================ */
+@keyframes radar-pulse {
+  0% {
+    r: 6;
+    opacity: 0.8;
+    stroke-width: 1.5;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+    stroke-width: 0.3;
+  }
+}
+
+@keyframes radar-center-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.radar-ring {
+  animation: radar-pulse 1.8s ease-out infinite;
+  transform-origin: center;
+}
+
+.radar-ring-delayed {
+  animation-delay: 0.9s;
+}
+
+.radar-center {
+  animation: radar-center-pulse 1.2s ease-in-out infinite;
+  transform-origin: center;
+  filter: drop-shadow(0 0 4px #ff3838);
+}
+
+/* ============================================
+   Typewriter cursor — blinks during and after typing
+   ============================================ */
+@keyframes typewriter-blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: typewriter-blink 1s steps(2) infinite;
+  color: currentColor;
+  font-weight: 300;
+}
+
+/* ============================================
+   Candle flicker (from before — keep if exists)
+   ============================================ */
+@keyframes cdl-flame-flicker {
+  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+  25% { transform: scaleY(1.08) scaleX(0.94); opacity: 0.95; }
+  50% { transform: scaleY(0.96) scaleX(1.04); opacity: 1; }
+  75% { transform: scaleY(1.04) scaleX(0.97); opacity: 0.92; }
+}
+@keyframes cdl-flame-glow-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.12); }
+}
+.cdl-flame { transform-origin: bottom center; animation: cdl-flame-flicker 0.8s ease-in-out infinite; }
+.cdl-flame-inner { transform-origin: bottom center; animation: cdl-flame-flicker 0.5s ease-in-out infinite reverse; }
+.cdl-flame-glow { transform-origin: center; animation: cdl-flame-glow-pulse 1.4s ease-in-out infinite; }
+
+/* ============================================
+   Steam rising from plate
+   ============================================ */
+@keyframes plate-steam-rise {
+  0% { opacity: 0; transform: translateY(20px) scaleY(0.6); }
+  30% { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(-20px) scaleY(1.1); }
+}
+.plate-steam {
+  transform-origin: bottom center;
+  animation: plate-steam-rise 3.5s ease-out infinite;
+}
+
+/* ============================================
+   Flowers blooming — scroll-driven via JS, with
+   a small CSS pulse to add life
+   ============================================ */
+@keyframes bloom-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+.bloom {
+  animation: bloom-breathe 4s ease-in-out infinite;
+}
+
+/* Each bloom gets a slightly different delay so they don't pulse in sync */
+.bloom:nth-child(odd) { animation-delay: -1s; }
+.bloom:nth-child(3n) { animation-delay: -2s; }
+.bloom:nth-child(5n) { animation-delay: -3s; }
+
+/* ============================================
+   Wax dripping — subtle slow drip down candles
+   ============================================ */
+@keyframes wax-drip-grow {
+  0% { transform: scaleY(0.85); }
+  50% { transform: scaleY(1.02); }
+  100% { transform: scaleY(0.85); }
+}
+.wax-drip {
+  transform-origin: center top;
+  animation: wax-drip-grow 5s ease-in-out infinite;
+}
+.wax-pool {
+  transform-origin: center;
+  animation: wax-drip-grow 5s ease-in-out infinite;
 }

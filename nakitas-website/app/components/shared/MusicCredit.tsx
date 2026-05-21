@@ -2,66 +2,56 @@
 
 /* ============================================================
    MusicCredit.tsx
-   The subtle "now playing" widget in the bottom-right corner.
-   Shows a small music icon + track title + artist in italic.
-   Designed to be present but never demand attention.
+   Subtle "now playing" widget in the bottom-right corner.
+   Adapts its color scheme based on the background it's on.
    ============================================================ */
 
 import { currentTrack } from "@/lib/tracks";
 
 interface MusicCreditProps {
-  /** Whether the music has actually started — controls visibility */
   isVisible: boolean;
+  /** 'dark' for dark backgrounds, 'light' for cream backgrounds */
+  variant?: "dark" | "light";
 }
 
-export default function MusicCredit({ isVisible }: MusicCreditProps) {
+export default function MusicCredit({
+  isVisible,
+  variant = "dark",
+}: MusicCreditProps) {
+  const isLight = variant === "light";
+
+  const iconColor = isLight
+    ? "var(--color-ink-shadow)"
+    : "var(--color-brass-needle)";
+  const textColor = isLight
+    ? "var(--color-ink-shadow)"
+    : "var(--color-paper-aged)";
+  const opacity = isVisible ? (isLight ? 0.6 : 0.55) : 0;
+
   return (
     <div
       className="fixed bottom-6 right-6 z-50 flex items-center gap-2 no-select transition-opacity duration-1000 pointer-events-none"
       style={{
-        opacity: isVisible ? 0.55 : 0,
+        opacity,
         fontFamily: "var(--font-italic-accent)",
       }}
       aria-label={`Now playing: ${currentTrack.title} by ${currentTrack.artist}`}
     >
-      {/* Tiny vinyl/music icon — built inline as SVG so it inherits colors */}
       <svg
         width="14"
         height="14"
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="opacity-80"
       >
-        {/* Outer circle (vinyl edge) */}
-        <circle
-          cx="12"
-          cy="12"
-          r="10"
-          stroke="var(--color-brass-needle)"
-          strokeWidth="1.2"
-          fill="none"
-        />
-        {/* Inner ring */}
-        <circle
-          cx="12"
-          cy="12"
-          r="6"
-          stroke="var(--color-brass-needle)"
-          strokeWidth="0.8"
-          fill="none"
-          opacity="0.6"
-        />
-        {/* Center dot */}
-        <circle cx="12" cy="12" r="1.5" fill="var(--color-brass-needle)" />
+        <circle cx="12" cy="12" r="10" stroke={iconColor} strokeWidth="1.2" fill="none" />
+        <circle cx="12" cy="12" r="6" stroke={iconColor} strokeWidth="0.8" fill="none" opacity="0.6" />
+        <circle cx="12" cy="12" r="1.5" fill={iconColor} />
       </svg>
 
       <p
         className="text-xs italic tracking-wider"
-        style={{
-          color: "var(--color-paper-aged)",
-          letterSpacing: "0.06em",
-        }}
+        style={{ color: textColor, letterSpacing: "0.06em" }}
       >
         {currentTrack.title}{" "}
         <span

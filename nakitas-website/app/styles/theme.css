@@ -31,6 +31,10 @@
   --color-terracotta-clay: #c8553d;     /* warm orange-red, food accents */
   --color-sage-herb: #87926d;           /* muted green, fresh accents */
 
+ /* Green accents for envelope */
+ --color-kombu-green: #00291C;
+ --color-deep-emerald: #3a6045;
+
   /* Warm halo — sits behind the record for dramatic contrast */
   --color-ember-glow: #d44a1c;          /* warm orange-red, primary glow */
   --color-amber-warmth: #e8742a;        /* slightly brighter, glow accent */
@@ -41,10 +45,27 @@
   --color-glass-border: rgba(201, 169, 97, 0.3);    /* brass border on glass */
   --color-shadow-deep: rgba(5, 8, 18, 0.7);         /* midnight shadow */
 
+  /* -- Loader Palette (cool shadow + warm light) ------------ */
+  /* Deepened blues for moody shadow, warm amber for light */
+  --color-loader-shadow: #04060e;       /* deepest cool blue-black, primary bg */
+  --color-loader-deep: #0a1322;         /* cool navy shadow */
+  --color-loader-mid: #142844;          /* lifted cool blue (lit-but-cool areas) */
+  --color-vinyl-edge-warm: #6b4a28;     /* warm amber catching the record's edge */
+
+  /* -- Lounge Palette (warm, for the dessert lounge) -------- */
+  --color-espresso-deep: #0d0907;
+  --color-espresso-wood: #1c140d;
+  --color-wood-lit: #5a3d22;
+  --color-wood-highlight: #7a5230;
+  --color-led-glow: #e89540;
+  --color-led-edge: #d4682a;
+  --color-hot-accent: #c8401f;
+
   /* -- Typography ------------------------------------------- */
   --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
   --font-italic-accent: var(--font-playfair), 'Playfair Display', serif;
   --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-letter: var(--font-typewriter), 'Courier New', monospace;
 
   /* -- Motion Language -------------------------------------- */
   --ease-silk: cubic-bezier(0.4, 0, 0.2, 1);

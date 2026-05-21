@@ -1,0 +1,94 @@
+/* ============================================
+   THEME.CSS — Master Control Panel
+   --------------------------------------------
+   Change a value here, the whole site updates.
+   Variables are named like a restaurant menu
+   so they describe MEANING, not just color.
+   ============================================ */
+
+:root {
+  /* -- Brand Palette ---------------------------------------- */
+  /* Deep blues — primary atmosphere */
+  --color-midnight-ink: #050812;        /* deepest, near-black blue, primary bg */
+  --color-navy-velvet: #0e1b35;         /* rich navy, secondary surfaces */
+  --color-sapphire-deep: #1a2f55;       /* deep sapphire, depth + shadow */
+  --color-steel-blue: #3a5378;          /* dusty steel, muted accents */
+  --color-cobalt-glow: #4a7ab8;         /* brighter cobalt, hover glow */
+
+  /* Warm metals — accents that "shine" against the blue */
+  --color-brass-needle: #c9a961;        /* warm brass, primary accent */
+  --color-truffle-gold: #b8860b;        /* deeper gold, hover states */
+  --color-champagne-light: #e6d3a3;     /* soft champagne, highlights */
+
+  /* Warm neutrals — text + soft surfaces */
+  --color-cream-linen: #f4ead5;         /* warm off-white, primary text */
+  --color-paper-aged: #e8dcc0;          /* aged paper, secondary text */
+  --color-ink-shadow: #0a0f1c;          /* deep ink, outlines + line art */
+
+  /* Spice accents — used sparingly for energy */
+  --color-burgundy-velvet: #5c1a1b;     /* deep wine, primary CTA */
+  --color-saffron-spill: #e8a838;       /* saffron pop, vibrant accents */
+  --color-terracotta-clay: #c8553d;     /* warm orange-red, food accents */
+  --color-sage-herb: #87926d;           /* muted green, fresh accents */
+
+ /* Green accents for envelope */
+ --color-kombu-green: #00291C;
+ --color-deep-emerald: #3a6045;
+
+  /* Warm halo — sits behind the record for dramatic contrast */
+  --color-ember-glow: #d44a1c;          /* warm orange-red, primary glow */
+  --color-amber-warmth: #e8742a;        /* slightly brighter, glow accent */
+  --color-rust-shadow: #7a2410;         /* deeper rust, glow falloff */
+  
+  /* -- Glass / Overlay -------------------------------------- */
+  --color-glass-veil: rgba(74, 122, 184, 0.12);     /* subtle blue glass */
+  --color-glass-border: rgba(201, 169, 97, 0.3);    /* brass border on glass */
+  --color-shadow-deep: rgba(5, 8, 18, 0.7);         /* midnight shadow */
+
+  /* -- Loader Palette (cool shadow + warm light) ------------ */
+  /* Deepened blues for moody shadow, warm amber for light */
+  --color-loader-shadow: #04060e;       /* deepest cool blue-black, primary bg */
+  --color-loader-deep: #0a1322;         /* cool navy shadow */
+  --color-loader-mid: #142844;          /* lifted cool blue (lit-but-cool areas) */
+  --color-vinyl-edge-warm: #6b4a28;     /* warm amber catching the record's edge */
+
+  /* -- Lounge Palette (warm, for the dessert lounge) -------- */
+  --color-espresso-deep: #0d0907;
+  --color-espresso-wood: #1c140d;
+  --color-wood-lit: #5a3d22;
+  --color-wood-highlight: #7a5230;
+  --color-led-glow: #e89540;
+  --color-led-edge: #d4682a;
+  --color-hot-accent: #c8401f;
+
+  /* -- Typography ------------------------------------------- */
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;
+  --font-italic-accent: var(--font-playfair), 'Playfair Display', serif;
+  --font-body: var(--font-inter), 'Inter', system-ui, sans-serif;
+  --font-letter: var(--font-typewriter), 'Courier New', monospace;
+
+  /* -- Motion Language -------------------------------------- */
+  --ease-silk: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-drop: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-rise: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-glide: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --duration-instant: 0.2s;
+  --duration-quick: 0.4s;
+  --duration-graceful: 0.8s;
+  --duration-luxurious: 1.2s;
+  --duration-cinematic: 2.0s;
+
+  /* -- Spacing Rhythm --------------------------------------- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* -- Radii ----------------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+}

@@ -16,9 +16,9 @@
   --color-cobalt-glow: #4a7ab8;         /* brighter cobalt, hover glow */
 
   /* Warm metals — accents that "shine" against the blue */
-  --color-brass-needle: #c9a961;        /* warm brass, primary accent */
+  --color-brass-needle: #d79737;        /* warm brass, primary accent */
   --color-truffle-gold: #b8860b;        /* deeper gold, hover states */
-  --color-champagne-light: #e6d3a3;     /* soft champagne, highlights */
+  --color-champagne-light: #f4d78f;     /* soft champagne, highlights */
 
   /* Warm neutrals — text + soft surfaces */
   --color-cream-linen: #f4ead5;         /* warm off-white, primary text */
@@ -47,7 +47,6 @@
 
   /* -- Loader Palette (cool shadow + warm light) ------------ */
   /* Deepened blues for moody shadow, warm amber for light */
-  --color-loader-shadow: #04060e;       /* deepest cool blue-black, primary bg */
   --color-loader-deep: #0a1322;         /* cool navy shadow */
   --color-loader-mid: #142844;          /* lifted cool blue (lit-but-cool areas) */
   --color-vinyl-edge-warm: #6b4a28;     /* warm amber catching the record's edge */
@@ -60,6 +59,12 @@
   --color-led-glow: #e89540;
   --color-led-edge: #d4682a;
   --color-hot-accent: #c8401f;
+
+ /* -- Loader Palette (burgundy/red, dimensional) ----------- */
+  --color-loader-shadow: #170002;       /* deepest burgundy-black, primary bg */
+  --color-wine-deep: #310107;           /* deep wine shadow */
+  --color-wine-mid: #490a0d;            /* lifted rich red (center of vinyl) */
+  --color-wine-bright: #7a1c20;         /* brightest red highlight */
 
   /* -- Typography ------------------------------------------- */
   --font-display: var(--font-cormorant), 'Cormorant Garamond', serif;

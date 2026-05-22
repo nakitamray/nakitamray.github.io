@@ -2,16 +2,24 @@
 
 /* ============================================================
    LoungeScene.tsx
-   The dessert lounge entry.
-   - Arrives dark, "lights come up" across the wall
-   - Cursor carries a warm light that reveals the dark wall
-   - Entry text fades up in a warm pool
-   Chunk 3 adds the shelves + framed photos.
+   A dim jazz-lounge gallery wall. Frames packed at the edges,
+   a clear text channel down the center. Wall sconces + a
+   pendant glow warmly; the cursor carries a light to reveal
+   the wall as you explore.
    ============================================================ */
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useCursorLight } from "@/lib/useCursorLight";
+import PhotoFrame from "./PhotoFrame";
+import { frames } from "./frames";
+import {
+  SconceCandle,
+  SconceTulip,
+  SconceLanternBox,
+  SconceDecoFan,
+  SconceGlobeArm,
+} from "./WallLights";
 
 interface LoungeSceneProps {
   onEnterAbout?: () => void;
@@ -19,34 +27,21 @@ interface LoungeSceneProps {
 
 export default function LoungeScene({ onEnterAbout }: LoungeSceneProps) {
   const cursorGlowRef = useCursorLight();
-  const [lightsUp, setLightsUp] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // "Lights coming up" sequence on mount
   useEffect(() => {
     const tl = gsap.timeline();
-
-    // The LED bands flicker/warm up one by one
-    tl.to(".led-band", {
+    tl.to(".gallery-frame", {
       opacity: 1,
-      duration: 0.5,
-      stagger: 0.25, // each band lights 0.25s after the previous
+      duration: 0.6,
+      stagger: 0.05,
       ease: "power2.out",
     });
-
-    // Entry text fades up after lights are mostly on
     tl.to(
       ".lounge-entry-text",
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "power2.out",
-        onStart: () => setLightsUp(true),
-      },
-      "-=0.4"
+      { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" },
+      "-=0.8"
     );
-
     return () => {
       tl.kill();
     };
@@ -58,82 +53,65 @@ export default function LoungeScene({ onEnterAbout }: LoungeSceneProps) {
       className="lounge-scene relative w-full min-h-screen overflow-hidden"
       style={{ backgroundColor: "var(--color-espresso-deep)" }}
     >
-      {/* ===========================================================
-          DARK WOOD WALL TEXTURE
-          Subtle vertical grain to suggest wood paneling
-          =========================================================== */}
+      {/* Warm wood-panel wall */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(90deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 60px, rgba(0,0,0,0.25) 63px), linear-gradient(180deg, var(--color-espresso-wood), var(--color-espresso-deep))",
-          opacity: 0.7,
+            "repeating-linear-gradient(90deg, rgba(0,0,0,0.3) 0px, rgba(0,0,0,0) 3px, rgba(0,0,0,0) 110px, rgba(0,0,0,0.3) 114px), linear-gradient(180deg, #1f1409, var(--color-espresso-deep))",
+          opacity: 0.6,
         }}
         aria-hidden="true"
       />
 
-      {/* ===========================================================
-          LED LIGHT BANDS — horizontal warm washes across shelves
-          These start at opacity 0 and "light up" on mount.
-          For now they're evenly spaced; Chunk 3 aligns them with
-          actual shelves.
-          =========================================================== */}
-      {[18, 38, 58, 78].map((topPct, i) => (
-        <div
-          key={`band-${i}`}
-          className="led-band absolute left-0 right-0 pointer-events-none"
-          style={{
-            top: `${topPct}%`,
-            height: "2px",
-            opacity: 0,
-            background:
-              "linear-gradient(90deg, transparent, var(--color-led-glow) 20%, var(--color-led-glow) 80%, transparent)",
-            boxShadow:
-              "0 0 24px 6px var(--color-led-edge), 0 8px 40px 8px rgba(212, 104, 42, 0.35)",
-            zIndex: 2,
-          }}
-          aria-hidden="true"
-        />
+      {/* Vignette to keep it moody */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 70% at 50% 45%, transparent, rgba(10,6,4,0.7) 100%)",
+          zIndex: 1,
+        }}
+        aria-hidden="true"
+      />
+
+      {/* ===== WALL SCONCES — all different, scattered ===== */}
+      <SconceCandle    style={{ top: "14%", left: "40%", zIndex: 2 }} />
+      <SconceTulip     style={{ top: "38%", left: "30%", zIndex: 2 }} />
+      <SconceGlobeArm  style={{ top: "33%", left: "60%", zIndex: 2 }} />
+      <SconceLanternBox style={{ top: "62%", left: "44%", zIndex: 2 }} />
+      <SconceDecoFan   style={{ top: "60%", left: "57%", zIndex: 2 }} />
+
+      {/* ===== FRAMES ===== */}
+      {frames.map((frame) => (
+        <PhotoFrame key={frame.id} frame={frame} />
       ))}
 
-      {/* ===========================================================
-          CURSOR LIGHT — warm glow that follows the mouse
-          Fixed so it tracks across the whole viewport.
-          Uses mix-blend so it "illuminates" rather than covers.
-          =========================================================== */}
+      {/* ===== CURSOR LIGHT ===== */}
       <div
         ref={cursorGlowRef}
         className="fixed top-0 left-0 pointer-events-none"
         style={{
-          width: "600px",
-          height: "600px",
+          width: "460px",
+          height: "460px",
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(232, 149, 64, 0.18) 0%, rgba(212, 104, 42, 0.08) 35%, transparent 70%)",
+            "radial-gradient(circle, rgba(232,149,64,0.22) 0%, rgba(212,90,34,0.09) 32%, transparent 65%)",
           mixBlendMode: "screen",
-          zIndex: 3,
+          zIndex: 4,
           willChange: "transform",
         }}
         aria-hidden="true"
       />
 
-      {/* ===========================================================
-          ENTRY TEXT — in a warm pool, fades up after lights
-          =========================================================== */}
-      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center">
+      {/* ===== CENTER TEXT (in the clear channel) ===== */}
+      <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center pointer-events-none">
         <div
-          className="lounge-entry-text"
+          className="lounge-entry-text pointer-events-auto"
           style={{ opacity: 0, transform: "translateY(20px)" }}
         >
-          <p
-            className="text-xs tracking-[0.4em] uppercase mb-6"
-            style={{ color: "var(--color-led-glow)", opacity: 0.8 }}
-          >
-            after hours
-          </p>
-
           <h2
-            className="text-5xl md:text-7xl lg:text-8xl mb-6"
+            className="text-5xl md:text-7xl lg:text-8xl mb-5"
             style={{
               fontFamily: "var(--font-display)",
               color: "var(--color-cream-linen)",
@@ -155,22 +133,21 @@ export default function LoungeScene({ onEnterAbout }: LoungeSceneProps) {
           </h2>
 
           <p
-            className="max-w-md mx-auto text-base md:text-lg mb-12 leading-relaxed"
+            className="text-base md:text-lg mb-12"
             style={{
               color: "var(--color-paper-aged)",
-              opacity: 0.75,
-              fontFamily: "var(--font-body)",
-              fontWeight: 300,
+              opacity: 0.7,
+              fontFamily: "var(--font-italic-accent)",
+              fontStyle: "italic",
+              letterSpacing: "0.04em",
             }}
           >
-            a curated evening of light, sound, and small sweet things.
-            by nakita.
+            pull up a chair.
           </p>
 
-          {/* About the chef — discreet entry */}
           <button
             onClick={onEnterAbout}
-            className="group inline-flex items-center gap-3 px-8 py-3 transition-all duration-500 cursor-pointer no-select mb-16"
+            className="group inline-flex items-center gap-3 px-8 py-3 transition-all duration-500 cursor-pointer no-select mb-16 hover:gap-4"
             style={{
               backgroundColor: "transparent",
               border: "1px solid var(--color-brass-needle)",
@@ -179,33 +156,28 @@ export default function LoungeScene({ onEnterAbout }: LoungeSceneProps) {
           >
             <span
               className="text-xs tracking-[0.3em] uppercase"
-              style={{
-                color: "var(--color-cream-linen)",
-                fontFamily: "var(--font-body)",
-              }}
+              style={{ color: "var(--color-cream-linen)", fontFamily: "var(--font-body)" }}
             >
               about the chef
             </span>
           </button>
 
-          {/* Scroll cue */}
           <div className="flex flex-col items-center">
             <p
               className="text-xs tracking-[0.3em] uppercase italic mb-3"
               style={{
                 color: "var(--color-paper-aged)",
-                opacity: 0.5,
+                opacity: 0.45,
                 fontFamily: "var(--font-italic-accent)",
               }}
             >
-              scroll to enter
+              scroll to look around
             </p>
             <div
-              className="w-px h-12 lounge-scroll-cue"
+              className="w-px h-12"
               style={{
-                background:
-                  "linear-gradient(to bottom, var(--color-led-glow), transparent)",
-                opacity: 0.6,
+                background: "linear-gradient(to bottom, var(--color-led-glow), transparent)",
+                opacity: 0.5,
               }}
             />
           </div>

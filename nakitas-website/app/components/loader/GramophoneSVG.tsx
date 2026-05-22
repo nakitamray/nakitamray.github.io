@@ -41,7 +41,7 @@ export default function GramophoneSVG({
         {/* Dimensional sapphire vinyl — centered, straight-on */}
         <radialGradient id="vinylSurface" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="var(--color-wine-mid)" />
-          <stop offset="35%" stopColor="var(--color-wine-deep)" />
+          <stop offset="25%" stopColor="var(--color-wine-deep)" />
           <stop offset="70%" stopColor="#0A0000" />
           <stop offset="100%" stopColor="#000000" />
         </radialGradient>

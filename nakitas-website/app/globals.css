@@ -187,3 +187,16 @@ h1, h2, h3, h4, h5, h6 {
   transform-origin: center;
   animation: wax-drip-grow 5s ease-in-out infinite;
 }
+
+/* ============================================
+   Lamp / lantern flicker — gentle warm pulse
+   ============================================ */
+@keyframes lamp-flicker {
+  0%, 100% { opacity: 0.3; }
+  45% { opacity: 0.42; }
+  55% { opacity: 0.26; }
+  70% { opacity: 0.38; }
+}
+.lamp-flicker {
+  animation: lamp-flicker 4s ease-in-out infinite;
+}

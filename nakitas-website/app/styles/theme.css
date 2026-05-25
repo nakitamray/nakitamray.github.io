@@ -55,7 +55,7 @@
   --color-hot-accent: #c8401f;
 
  /* -- Loader Palette (burgundy/red, dimensional) ----------- */
-  --color-loader-shadow: #170002;       /* deepest burgundy-black, primary bg */
+  --color-loader-shadow: #170002;       /* 170002 deepest burgundy-black, primary bg */
   --color-wine-deep: #310107;           /* deep wine shadow */
   --color-wine-mid: #490a0d;            /* lifted rich red (center of vinyl) */
   --color-wine-bright: #7a1c20;         /* brightest red highlight */

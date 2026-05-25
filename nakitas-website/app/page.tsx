@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import GramophoneScene from "./components/loader/GramophoneScene";
-import MenuScene from "./components/menu/MenuScene";
 import AboutScene from "./components/about/AboutScene";
 import MusicCredit from "./components/shared/MusicCredit";
+import LoungeScene from "./components/lounge/LoungeScene";
 
 type SceneState = "loader" | "menu" | "about" | "feast";
 
@@ -32,10 +32,7 @@ export default function Home() {
       )}
 
       {scene === "menu" && (
-        <MenuScene
-          onEnterAbout={() => setScene("about")}
-          onReachFeast={() => setScene("feast")}
-        />
+        <LoungeScene onEnterAbout={() => setScene("about")} />
       )}
 
       {scene === "about" && (

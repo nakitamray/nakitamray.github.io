@@ -40,10 +40,10 @@ export default function GramophoneSVG({
 
         {/* Dimensional sapphire vinyl — centered, straight-on */}
         <radialGradient id="vinylSurface" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#1f3a63" />
-          <stop offset="35%" stopColor="var(--color-sapphire-deep)" />
-          <stop offset="70%" stopColor="var(--color-navy-velvet)" />
-          <stop offset="100%" stopColor="#040711" />
+          <stop offset="0%" stopColor="var(--color-wine-mid)" />
+          <stop offset="25%" stopColor="var(--color-wine-deep)" />
+          <stop offset="70%" stopColor="#0A0000" />
+          <stop offset="100%" stopColor="#000000" />
         </radialGradient>
 
         {/* Center brass label */}
@@ -103,16 +103,16 @@ export default function GramophoneSVG({
               cy="400"
               r={radius}
               fill="none"
-              stroke="var(--color-cobalt-glow)"
+              stroke="var(--color-wine-bright)"
               strokeWidth="0.5"
-              opacity="0.28"
+              opacity="0.35"
             />
           );
         })}
 
-        <circle cx="400" cy="400" r="200" fill="none" stroke="var(--color-cobalt-glow)" strokeWidth="0.6" opacity="0.4" />
-        <circle cx="400" cy="400" r="240" fill="none" stroke="var(--color-cobalt-glow)" strokeWidth="0.6" opacity="0.4" />
-        <circle cx="400" cy="400" r="280" fill="none" stroke="var(--color-cobalt-glow)" strokeWidth="0.6" opacity="0.4" />
+        <circle cx="400" cy="400" r="200" fill="none" stroke="var(--color-amber-warmth)" strokeWidth="0.6" opacity="0.4" />
+        <circle cx="400" cy="400" r="240" fill="none" stroke="var(--color-amber-warmth)" strokeWidth="0.6" opacity="0.4" />
+        <circle cx="400" cy="400" r="280" fill="none" stroke="var(--color-amber-warmth)" strokeWidth="0.6" opacity="0.4" />
 
         <circle
           cx="400"
